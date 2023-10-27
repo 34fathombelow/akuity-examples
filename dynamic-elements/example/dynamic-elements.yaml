@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: elementsyaml
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - matrix:
+      generators:
+      - git:
+          repoURL: https://github.com/34fathombelow/akuity-examples.git
+          revision: HEAD
+          files:
+          - path: dynamic-elements/example/list-generator/list-elementsYaml-example.yaml
+      - list:
+          elements: []
+          elementsYaml: "{{ .components | toJson }}"
+  template:
+    metadata:
+      name: '{{.name}}'
+    spec:
+      project: default
+      syncPolicy:
+        automated:
+          selfHeal: true    
+        syncOptions:
+        - CreateNamespace=true        
+      sources:
+        - chart: '{{.chart}}'
+          repoURL: '{{.repoUrl}}'
+          targetRevision: '{{.version}}'
+          helm:
+            releaseName: '{{.releaseName}}'
+      destination:
+        name: local-testing
+        namespace: '{{.namespace}}'
