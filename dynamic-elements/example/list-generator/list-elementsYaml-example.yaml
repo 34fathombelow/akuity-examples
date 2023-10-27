@@ -6,7 +6,8 @@
       "version": "6.3.2",
       "releaseName": "component1",
       "repoUrl": "https://stefanprodan.github.io/podinfo",
-      "namespace": "component1"
+      "namespace": "component1",
+      "cluster": "local-testing"
     },
     {
       "name": "component2",
@@ -14,7 +15,8 @@
       "version": "6.3.3",
       "releaseName": "component2",
       "repoUrl": "ghcr.io/stefanprodan/charts",
-      "namespace": "component2"
+      "namespace": "component2",
+      "cluster": "local-testing"
     }
   ]
 }
