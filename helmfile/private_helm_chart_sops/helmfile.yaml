@@ -1,0 +1,18 @@
+
+environments: 
+  default:
+    secrets:
+      - ./secret.yaml
+---
+repositories:
+  - name: namespace
+    url: https://raw.githubusercontent.com/seabytee/argo-examples/main
+    username: "{{ .Values.username }}"
+    password: "{{ .Values.password }}"
+    passCredentials: false
+releases:
+  - name: namespace
+    chart: namespace/namespace
+    version: 0.1.0
+    values:
+      - ./values.yaml
