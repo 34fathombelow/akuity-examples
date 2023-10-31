@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helmfile-sops
+  namespace: argocd
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          env: dev
+  template: 
+    metadata:
+      name: '{{name}}-helmfile-ns'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/34fathombelow/akuity-examples.git'
+        targetRevision: HEAD
+        path: helmfile/private_helm_chart_sops/example
+        plugin:
+          name: helmfile
+          string: '--set namespace={{cluster}}'
+      destination:
+        name: '{{name}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true

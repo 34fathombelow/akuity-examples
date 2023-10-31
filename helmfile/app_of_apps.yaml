@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helmfile_private_chart_sops
+spec:
+  project: default
+  syncPolicy:
+    automated: {}
+  source:
+    repoURL: https://github.com/34fathombelow/akuity-examples.git
+    targetRevision: main
+    path: helmfile/private_helm_chart_sops/example
+    directory:
+      recurse: true
+  destination:
+    name: in-cluster
+    namespace: argocd
