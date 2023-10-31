@@ -22,7 +22,7 @@ spec:
           name: helmfile
           parameters:
             - name: HELMFILE_TEMPLATE_OPTIONS
-              string: '--set namespace={{cluster}}'
+              string: '--set namespace="{{name}}"'
       destination:
         name: '{{name}}'
       syncPolicy:
