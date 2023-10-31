@@ -21,8 +21,8 @@ spec:
         plugin:
           name: helmfile
           parameters:
-          - name: HELMFILE_TEMPLATE_OPTIONS
-          string: '--set namespace={{cluster}}'
+            - name: HELMFILE_TEMPLATE_OPTIONS
+              string: '--set namespace={{cluster}}'
       destination:
         name: '{{name}}'
       syncPolicy:
