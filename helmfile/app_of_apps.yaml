@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: helmfile_private_chart_sops
+  name: helmfile-private-chart-sops
 spec:
   project: default
   syncPolicy:
@@ -9,9 +9,7 @@ spec:
   source:
     repoURL: https://github.com/34fathombelow/akuity-examples.git
     targetRevision: main
-    path: helmfile/private_helm_chart_sops/example
-    directory:
-      recurse: true
+    path: helmfile/private_helm_chart_sops
   destination:
     name: in-cluster
     namespace: argocd
