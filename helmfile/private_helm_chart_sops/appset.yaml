@@ -20,6 +20,8 @@ spec:
         path: helmfile/private_helm_chart_sops/example
         plugin:
           name: helmfile
+          parameters:
+          - name: HELMFILE_TEMPLATE_OPTIONS
           string: '--set namespace={{cluster}}'
       destination:
         name: '{{name}}'
