@@ -16,7 +16,7 @@
       "releaseName": "component2",
       "repoUrl": "ghcr.io/stefanprodan/charts",
       "namespace": "component2",
-      "cluster": "local-testing"
+      "cluster": "local-testing2"
     }
   ]
 }
