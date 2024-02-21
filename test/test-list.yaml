@@ -8,7 +8,7 @@ spec:
   - list:
       elements:
       - name: prod
-        cluster: in-cluster
+        cluster: abcde
       - name: staging
         cluster: local-testing
       - name: dev
