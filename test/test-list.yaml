@@ -1,37 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
-  name: guestbook
+  annotations:
+    my-custom-annotation: some-value
+  creationTimestamp: '2024-02-21T05:11:49Z'
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  generation: 20
+  labels:
+    cluster: local-testing22
+    my-custom-label: some-value
+  name: dev-guestbook
   namespace: argocd
 spec:
-  generators:
-  - list:
-      elements:
-      - name: prod
-        cluster: abcde
-      - name: staging
-        cluster: local-testing33
-      - name: dev
-        cluster: local-testing233
-  template:
-    metadata:
-      name: '{{name}}-guestbook'
-      annotations:
-        my-custom-annotation: some-value
-      labels:
-        my-custom-label: some-value
-    spec:
-      project: "default"
-      source:
-        repoURL: https://github.com/akuity/guestbook-delivery.git
-        targetRevision: HEAD
-        path: 'guestbook'
-      destination:
-        name: '{{cluster}}'
-        namespace: guestbook
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-        - CreateNamespace=true
+  destination:
+    name: local-testing22
+    namespace: guestbook
+  project: default
+  source:
+    path: guestbook
+    repoURL: 'https://github.com/akuity/guestbook-delivery.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
