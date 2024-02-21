@@ -12,7 +12,7 @@ spec:
       - name: staging
         cluster: local-testing33
       - name: dev
-        cluster: local-testing233
+        cluster: local-testing2
   template:
     metadata:
       name: '{{name}}-guestbook'
