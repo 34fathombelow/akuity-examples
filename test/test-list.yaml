@@ -9,13 +9,10 @@ spec:
       elements:
       - name: prod
         cluster: in-cluster
-        env: env/prod
       - name: staging
         cluster: local-testing
-        env: env/stage
       - name: dev
         cluster: local-testing2
-        env: env/dev
   template:
     metadata:
       name: '{{name}}-guestbook'
@@ -28,7 +25,7 @@ spec:
       source:
         repoURL: https://github.com/akuity/guestbook-delivery.git
         targetRevision: HEAD
-        path: '{{env}}'
+        path: 'guestbook'
       destination:
         name: '{{cluster}}'
         namespace: guestbook
