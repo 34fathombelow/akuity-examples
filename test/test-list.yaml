@@ -10,9 +10,9 @@ spec:
       - name: prod
         cluster: abcde
       - name: staging
-        cluster: local-testing
+        cluster: local-testing33
       - name: dev
-        cluster: local-testing2
+        cluster: local-testing233
   template:
     metadata:
       name: '{{name}}-guestbook'
