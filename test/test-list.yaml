@@ -1,37 +1,19 @@
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+apiVersion: batch/v1
+kind: CronJob
 metadata:
-  name: guestbook
-  namespace: argocd
+  name: hello
 spec:
-  generators:
-  - list:
-      elements:
-      - name: prod
-        cluster: abcde
-      - name: staging
-        cluster: local-testing33
-      - name: dev
-        cluster: local-testing2
-  template:
-    metadata:
-      name: '{{name}}-guestbook'
-      annotations:
-        my-custom-annotation: some-value
-      labels:
-        my-custom-label: some-value
+  schedule: "20 * * * *"
+  jobTemplate:
     spec:
-      project: "default"
-      source:
-        repoURL: https://github.com/akuity/guestbook-delivery.git
-        targetRevision: HEAD
-        path: 'guestbook'
-      destination:
-        name: '{{cluster}}'
-        namespace: guestbook
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-        - CreateNamespace=true
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox:1.28
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure`
