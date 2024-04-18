@@ -1,20 +1,40 @@
-apiVersion: batch/v1
-kind: CronJob
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
 metadata:
-  name: hello
-  namespace: default
+  name: applications
+  namespace: argocd
 spec:
-  schedule: "20 * * * *"
-  jobTemplate:
-    spec:
+  generators:
+  - list:
+      elements:
+      - cluster: local-testing
+        name: one
+      - cluster: local-testing2
+        name: two
       template:
+        metadata: {}
         spec:
-          containers:
-          - name: hello
-            image: busybox:1.28
-            imagePullPolicy: IfNotPresent
-            command:
-            - /bin/sh
-            - -c
-            - date; echo Hello from the Kubernetes cluster
-          restartPolicy: OnFailure
+          destination: {}
+          project: ""
+  template:
+    metadata:
+      annotations:
+        my-custom-annotation: some-value
+      labels:
+        my-custom-label: some-value
+      name: guestbook-{{name}}
+    spec:
+      destination:
+        name: '{{cluster}}'
+        namespace: guestbook
+      project: default
+      source:
+        path: guestbook
+        repoURL: https://github.com/argoproj/argocd-example-apps.git
+        targetRevision: HEAD
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
