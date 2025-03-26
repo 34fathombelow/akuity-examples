@@ -38,3 +38,5 @@ spec:
   - /^((?!kube-system).)*$/
   sourceRepos:
   - '*'
+---
+# It's also important to note that proper RBAC should be configured to properly view the apps in the UI/CLI.  Please see: https://argo-cd.readthedocs.io/en/latest/operator-manual/app-any-namespace/#application-rbac
