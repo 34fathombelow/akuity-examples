@@ -1,6 +1,6 @@
 dependencies:
 - name: wordpress
-  repository: https://charts.helm.sh/stable
-  version: 9.0.3
-digest: sha256:96439d705c9bd5431947de60a61b3bfc04f59ff461db50cb0eba99e9ae48b52a
-generated: "2025-07-06T21:51:44.751942-07:00"
+  repository: https://charts.bitnami.com/bitnami
+  version: 19.0.3
+digest: sha256:f2f3598d4795e759ae3d6d68f1fcd6aa2d6859eb98e96861465e250a7999fb1e
+generated: "2025-07-06T22:02:38.449396-07:00"
