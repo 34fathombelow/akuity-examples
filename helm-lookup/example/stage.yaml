@@ -42,5 +42,6 @@ helm-guestbook:
   tolerations: []
   
   affinity: {}
-mysql:
+
+postgresql:
   enabled: false

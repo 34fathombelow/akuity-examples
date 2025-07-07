@@ -43,5 +43,5 @@ helm-guestbook:
   
   affinity: {}
 
-mysql:
+postgresql:
   enabled: false
