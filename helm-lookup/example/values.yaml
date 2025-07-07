@@ -42,5 +42,5 @@ tolerations: []
 
 affinity: {}
 
-postgresql:
+nginx:
   enabled: false

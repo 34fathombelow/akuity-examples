@@ -42,12 +42,10 @@ tolerations: []
 
 affinity: {}
 
-postgresql:
+nginx:
   enabled: true
-  auth:
-    user: "user"
-    postgresPassword: "newPostgresPassword123"
-    password: "newUserPassword123"
-  
-  passwordUpdateJob:
-    enabled: true
+  replicaCount: 1
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: false
