@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-helm-lookup
+  namespace: argocd
+spec:
+  destination:
+    namespace: guestbook-helmlookup
+    name: temp
+  source:
+    path: helm-lookup/example
+    repoURL: https://github.com/34fathombelow/akuity-examples.git
+    targetRevision: main
+    plugin:
+      name: helm-lookup
+      parameters:
+        - array:
+            - stage.yaml
+          name: values-files
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
