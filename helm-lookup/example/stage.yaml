@@ -49,4 +49,4 @@ nginx:
     type: ClusterIP
   ingress:
     enabled: false
-  fullnameOverride: ""
+  fullnameOverride: "myapp"
