@@ -43,4 +43,4 @@ tolerations: []
 affinity: {}
 
 postgresql:
-  enabled: false
+  enabled: true
