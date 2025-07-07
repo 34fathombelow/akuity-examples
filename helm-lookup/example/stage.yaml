@@ -49,3 +49,4 @@ nginx:
     type: ClusterIP
   ingress:
     enabled: false
+  fullnameOverride: ""
