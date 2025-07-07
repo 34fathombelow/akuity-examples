@@ -44,3 +44,10 @@ affinity: {}
 
 postgresql:
   enabled: true
+  auth:
+    username: myuser
+    password: mypassword
+    database: mydb
+  primary:
+    persistence:
+      enabled: falses
