@@ -45,14 +45,9 @@ affinity: {}
 postgresql:
   enabled: true
   auth:
-    username: myuser
-    password: mypassword
-    database: mydb
-    existingSecret: ""
-  primary:
-    persistence:
-      enabled: false
-  global:
-    postgresql:
-      auth:
-        forcePassword: true
+    user: "user"
+    postgresPassword: "newPostgresPassword123"
+    password: "newUserPassword123"
+  
+  passwordUpdateJob:
+    enabled: true
