@@ -20,6 +20,8 @@ spec:
         - array:
             - stage.yaml
           name: values-files
+        - name: releaseName
+          string: custom-name
   project: default
   syncPolicy:
     automated:
