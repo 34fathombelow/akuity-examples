@@ -13,6 +13,9 @@ spec:
     targetRevision: main
     plugin:
       name: helm-lookup
+      env:
+        - name: HELM_RESPECT_CHART_NAMESPACE
+          value: true
       parameters:
         - array:
             - stage.yaml
