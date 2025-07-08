@@ -15,7 +15,7 @@ spec:
       name: helm-lookup
       env:
         - name: HELM_RESPECT_CHART_NAMESPACE
-          value: "true"
+          value: "false"
       parameters:
         - array:
             - stage.yaml
