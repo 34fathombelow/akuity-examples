@@ -43,7 +43,7 @@ tolerations: []
 affinity: {}
 
 nginx:
-  enabled: true
+  enabled: false
   replicaCount: 1
   service:
     type: ClusterIP
