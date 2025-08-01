@@ -21,7 +21,7 @@ spec:
     metadata:
       name: '{{.name}}'
     spec:
-      project: default
+      project: '{{.project}}'
       syncPolicy:
         automated:
           selfHeal: true    
