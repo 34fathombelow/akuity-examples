@@ -7,7 +7,8 @@
       "releaseName": "component1",
       "repoUrl": "https://stefanprodan.github.io/podinfo",
       "namespace": "component1",
-      "cluster": "local-testing"
+      "cluster": "local-testing",
+      "project": "one"
     },
     {
       "name": "component2",
@@ -16,7 +17,8 @@
       "releaseName": "component2",
       "repoUrl": "ghcr.io/stefanprodan/charts",
       "namespace": "component2",
-      "cluster": "local-testing2"
+      "cluster": "local-testing2",
+      "project": "two"
     }
   ]
 }
