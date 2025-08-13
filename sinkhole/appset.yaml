@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchExpressions:
+        - {key: akuity.io/argo-cd-cluster-name, operator: NotIn, values: [in-cluster]}
+  template: 
+    metadata:
+      name: '{{name}}-sinkhole'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/argoproj/argocd-example-apps/
+        targetRevision: HEAD
+        path: sinkhole/example
+      destination:
+        name: '{{name}}'
+        namespace: akuity
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
