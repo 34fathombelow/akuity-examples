@@ -21,7 +21,7 @@ spec:
   source:
     path: .
     repoURL: https://github.com/34fathombelow/akuity-examples.git
-    targetRevision: rendered
+    targetRevision: rendered-prod
   syncPolicy:
     automated: {}
     syncOptions:
@@ -40,7 +40,7 @@ spec:
   source:
     path: .
     repoURL: https://github.com/34fathombelow/akuity-examples.git
-    targetRevision: rendered
+    targetRevision: rendered-test
   syncPolicy:
     automated: {}
     syncOptions:
