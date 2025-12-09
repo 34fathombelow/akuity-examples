@@ -31,7 +31,7 @@ metadata:
     release: release-name
     heritage: Helm
 spec:
-  replicas: 1
+  replicas: 2
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -61,3 +61,17 @@ spec:
               port: http
           resources:
             {}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: example-config
+data:
+  APP_ENV: "production"
+  TIMEOUT_SECONDS: "30"
+  config.json: |
+    {
+      "featureA": true,
+      "featureB": "disabled",
+      "retries": 5
+    }
