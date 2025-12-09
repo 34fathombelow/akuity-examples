@@ -19,9 +19,9 @@ spec:
     name: prod
   project: app-in-any-namespace
   source:
-    path: helm-guestbook
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
-    targetRevision: HEAD
+    path: .
+    repoURL: https://github.com/34fathombelow/akuity-examples.git
+    targetRevision: rendered
   syncPolicy:
     automated: {}
     syncOptions:
@@ -38,9 +38,9 @@ spec:
     name: test
   project: app-in-any-namespace
   source:
-    path: helm-guestbook
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
-    targetRevision: HEAD
+    path: .
+    repoURL: https://github.com/34fathombelow/akuity-examples.git
+    targetRevision: rendered
   syncPolicy:
     automated: {}
     syncOptions:
