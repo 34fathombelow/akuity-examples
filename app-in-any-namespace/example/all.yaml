@@ -8,6 +8,11 @@ kind: Namespace
 metadata:
   name: app-in-any-namespace2
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-in-any-namespace3
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -41,6 +46,25 @@ spec:
     path: .
     repoURL: https://github.com/34fathombelow/akuity-examples.git
     targetRevision: rendered-test
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-guestbook
+  namespace: app-in-any-namespace3
+spec:
+  destination:
+    namespace: any-guestbook
+    name: dev
+  project: app-in-any-namespace
+  source:
+    path: .
+    repoURL: https://github.com/34fathombelow/akuity-examples.git
+    targetRevision: rendered-doesnotexist
   syncPolicy:
     automated: {}
     syncOptions:
