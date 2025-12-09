@@ -35,7 +35,7 @@ metadata:
 spec:
   destination:
     namespace: any-guestbook2
-    name: prod
+    name: test
   project: app-in-any-namespace
   source:
     path: helm-guestbook
