@@ -3,6 +3,11 @@ kind: Namespace
 metadata:
   name: app-in-any-namespace
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-in-any-namespace2
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -11,6 +16,25 @@ metadata:
 spec:
   destination:
     namespace: any-guestbook
+    name: prod
+  project: app-in-any-namespace
+  source:
+    path: helm-guestbook
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-guestbook
+  namespace: app-in-any-namespace2
+spec:
+  destination:
+    namespace: any-guestbook2
     name: prod
   project: app-in-any-namespace
   source:
