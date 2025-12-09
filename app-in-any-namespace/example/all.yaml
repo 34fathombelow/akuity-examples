@@ -34,7 +34,7 @@ metadata:
   namespace: app-in-any-namespace2
 spec:
   destination:
-    namespace: any-guestbook2
+    namespace: any-guestbook
     name: test
   project: app-in-any-namespace
   source:
