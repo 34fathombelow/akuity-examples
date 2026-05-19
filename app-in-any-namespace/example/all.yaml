@@ -33,7 +33,7 @@ spec:
     kind: '*'
   destinations:
   - namespace: '*'
-    server: 'prod'
+    server: '*'
   sourceNamespaces:
   - /^((?!kube-system).)*$/
   sourceRepos:
