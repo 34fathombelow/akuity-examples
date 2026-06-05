@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  creationTimestamp: "2026-05-19T15:25:28Z"
+  generation: 1
+  name: guestbook-list-generator
+  namespace: app-in-any-namespace
+  resourceVersion: "146297521"
+  uid: 808b39cf-7a3d-4e10-a645-7734513d2656
+spec:
+  generators:
+  - list:
+      elements:
+      - name: test
+        namespace: test
+        server: http://cluster-test:8001
+      - name: prod
+        namespace: prod
+        server: http://cluster-prod:8001
+      - name: dev
+        namespace: dev
+        server: http://cluster-dev:8001
+      - name: doesnoexist
+        namespace: dev
+        server: http://cluster-doesnotexist:8001
+      template:
+        metadata: {}
+        spec:
+          destination: {}
+          project: ""
+  goTemplate: true
+  goTemplateOptions:
+  - missingkey=error
+  syncPolicy:
+    applicationsSync: sync
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      annotations:
+        kargo.akuity.io/authorized-stage: semver:first
+        notifications.argoproj.io/subscribe.on-deployed-git.github: ""
+      name: '{{.name}}-guestbook'
+      namespace: app-in-any-namespace
+    spec:
+      destination:
+        namespace: '{{.namespace}}'
+        server: '{{.server}}'
+      project: app-in-any-namespace
+      source:
+        path: guestbook
+        repoURL: https://github.com/34fathombelow/argocd-example-apps.git
+        targetRevision: testing
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
