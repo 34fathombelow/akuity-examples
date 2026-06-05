@@ -16,6 +16,9 @@ spec:
       - name: dev
         namespace: dev
         server: http://cluster-dev:8001
+      - name: doesnotexist
+        namespace: dev
+        server: http://cluster-doesnotexist:8001
       template:
         metadata: {}
         spec:
