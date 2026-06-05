@@ -23,6 +23,25 @@ spec:
     - CreateNamespace=true
 ---
 apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-guestbook-doesnotexist
+  namespace: app-in-any-namespace
+spec:
+  destination:
+    namespace: any-guestbook
+    name: doesnotexist
+  project: app-in-any-namespace
+  source:
+    path: .
+    repoURL: https://github.com/34fathombelow/akuity-examples.git
+    targetRevision: rendered-prod
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: app-in-any-namespace
