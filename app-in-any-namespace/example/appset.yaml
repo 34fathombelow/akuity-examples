@@ -1,12 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  creationTimestamp: "2026-05-19T15:25:28Z"
-  generation: 1
   name: guestbook-list-generator
   namespace: app-in-any-namespace
-  resourceVersion: "146297521"
-  uid: 808b39cf-7a3d-4e10-a645-7734513d2656
 spec:
   generators:
   - list:
